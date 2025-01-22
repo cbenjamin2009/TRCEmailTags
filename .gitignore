@@ -1,0 +1,78 @@
+# Compiled source #
+###################
+*.class
+*.war
+*.jar
+*.ear
+
+# Logs #
+########
+*.log
+
+# OS generated files #
+######################
+.DS_Store
+Thumbs.db
+
+# IDE specific files #
+######################
+.idea/
+.vscode/
+*.suo
+*.user
+*.userossc
+*.sln.docstates
+
+# Node.js #
+###########
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Python #
+##########
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pdb
+*.egg-info/
+dist/
+build/
+
+# Java #
+########
+*.class
+*.jar
+*.war
+*.ear
+*.iml
+*.ipr
+*.iws
+*.project
+*.classpath
+*.settings/
+
+# Miscellaneous #
+#################
+*.swp
+*.swo
+*.bak
+*.tmp
+*.old
+*.orig
+*.rej
+*.sublime-project
+*.sublime-workspace
+*.tmproj
+*.tm_properties
+*.log
+*.out
+*.pid
+*.seed
+*.pid.lock
+*.pidfile
+*.pid.lockfile
+*.pidfile.lock
+*.pid.lockfile.lock
+*.pidfile.lockfile.lock
