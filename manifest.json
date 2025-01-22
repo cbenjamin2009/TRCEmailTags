@@ -53,7 +53,7 @@
                 ]
             },
             "runtimes": [
-              {
+                {
                     "id": "CommandsRuntime",
                     "type": "general",
                     "code": {
@@ -65,7 +65,24 @@
                         {
                             "id": "action",
                             "type": "executeFunction"
+                        },
+                        {
+                            "id": "tagInfoOnly",
+                            "type": "executeFunction"
+                        },
+                        {
+                            "id": "tagActionRequired",
+                            "type": "executeFunction"
+                        },
+                        {
+                            "id": "tagResponseRequested",
+                            "type": "executeFunction"
+                        },
+                        {
+                            "id": "tagUrgent",
+                            "type": "executeFunction"
                         }
+
                     ]
                 }
             ],
@@ -97,9 +114,10 @@
                                     ],
                                     "controls": [
                                         {
-                                            "id": "ActionButton",
-                                            "type": "button",
-                                            "label": "Perform an action",
+                                            "id": "ActionMenu",
+                                            "type": "menu",
+                                            "label": "Rush Email Tag",
+                                            "actionId": "action",
                                             "icons": [
                                                 {
                                                     "size": 16,
@@ -118,7 +136,105 @@
                                                 "title": "Perform an action",
                                                 "description": "Perform an action when clicked."
                                             },
-                                            "actionId": "action"
+                                            "items": [
+                                                {
+                                                    "id": "ActionMenuItem1",
+                                                    "type": "menuItem",
+                                                    "label": "Tag Info Only",
+                                                    "actionId": "tagInfoOnly",
+                                                    "icons": [
+                                                        {
+                                                            "size": 16,
+                                                            "url": "https://localhost:3000/assets/icon-16.png"
+                                                        },
+                                                        {
+                                                            "size": 32,
+                                                            "url": "https://localhost:3000/assets/icon-32.png"
+                                                        },
+                                                        {
+                                                            "size": 80,
+                                                            "url": "https://localhost:3000/assets/icon-80.png"
+                                                        }
+                                                    ],
+                                                    "supertip": {
+                                                        "title": "Tag Info Only",
+                                                        "description": "Tag the email as Info Only."
+
+                                                    }
+                                                },
+                                                {
+                                                    "id": "ActionMenuItem2",
+                                                    "type": "menuItem",
+                                                    "label": "Tag Action Required",
+                                                    "actionId": "tagActionRequired",
+                                                    "icons": [
+                                                        {
+                                                            "size": 16,
+                                                            "url": "https://localhost:3000/assets/icon-16.png"
+                                                        },
+                                                        {
+                                                            "size": 32,
+                                                            "url": "https://localhost:3000/assets/icon-32.png"
+                                                        },
+                                                        {
+                                                            "size": 80,
+                                                            "url": "https://localhost:3000/assets/icon-80.png"
+                                                        }
+                                                    ],
+                                                    "supertip": {
+                                                        "title": "Tag Action Required",
+                                                        "description": "Tag the email as Action Required."
+                                                    }
+                                                },
+                                                {
+                                                    "id": "ActionMenuItem3",
+                                                    "type": "menuItem",
+                                                    "label": "Tag Response Requested",
+                                                    "actionId": "tagResponseRequested",
+                                                    "icons": [
+                                                        {
+                                                            "size": 16,
+                                                            "url": "https://localhost:3000/assets/icon-16.png"
+                                                        },
+                                                        {
+                                                            "size": 32,
+                                                            "url": "https://localhost:3000/assets/icon-32.png"
+                                                        },
+                                                        {
+                                                            "size": 80,
+                                                            "url": "https://localhost:3000/assets/icon-80.png"
+                                                        }
+                                                    ],
+                                                    "supertip": {
+                                                        "title": "Tag Response Requested",
+                                                        "description": "Tag the email as Response Requested."
+                                                    }
+                                                },
+                                                {
+                                                    "id": "ActionMenuItem4",
+                                                    "type": "menuItem",
+                                                    "label": "Tag Urgent",
+                                                    "actionId": "tagUrgent",
+                                                    "icons": [
+                                                        {
+                                                            "size": 16,
+                                                            "url": "https://localhost:3000/assets/icon-16.png"
+                                                        },
+                                                        {
+                                                            "size": 32,
+                                                            "url": "https://localhost:3000/assets/icon-32.png"
+                                                        },
+                                                        {
+                                                            "size": 80,
+                                                            "url": "https://localhost:3000/assets/icon-80.png"
+                                                        }
+                                                    ],
+                                                    "supertip": {
+                                                        "title": "Tag Urgent",
+                                                        "description": "Tag the email as Urgent."
+                                                    }
+                                                }
+                                            ]
                                         }
                                     ]
                                 }

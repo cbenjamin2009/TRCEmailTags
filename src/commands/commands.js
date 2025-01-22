@@ -8,9 +8,12 @@
 Office.onReady(() => {
   // If needed, Office.js is ready to be called.
 });
-
+/**
+ * Shows a notification when the add-in command is executed.
+ * @param event {Office.AddinCommands.Event}
+ */
 function tagInfoOnly() {
-  tagEmail("FYI");
+  tagEmail("[FYI]");
 }
 
 function tagActionRequired() {
@@ -22,9 +25,11 @@ function tagResponseRequested() {
 }
 
 function tagUrgent() {
-  tagEmail("[URGENT]");
+  // set email importance to high
   Office.context.mailbox.item.itemType === Office.MailboxEnums.ItemType.Message &&
-    Office.context.mailbox.item.setAsync({ importance: "high" });
+  Office.context.mailbox.item.setAsync({ importance: "high" });
+  tagEmail("[URGENT]");
+
 }
 
 function tagEmail(prefix) {
@@ -35,23 +40,23 @@ function tagEmail(prefix) {
     persistent: false,
   };
 
-  Office.context.mailbox.item.notificationMessages.replaceAsync("action", message);
-
-   Office.context.mailbox.item.subject.getAsync((prefix) => {
-    const currentSubject = prefix.value;
+  Office.context.mailbox.item.subject.getAsync((result) => {
+    // We must first check that the currentSubject doesn't already contain a prefix, if it does, we need to exlude it and only apply the new prefix
+    const prefixes = ["[FYI]", "[ACTION]", "[Response Required]", "[URGENT]"];
+    let currentSubject = result.value;
+    prefixes.forEach((prefix) => {
+      if (currentSubject.startsWith(prefix)) {
+      currentSubject = currentSubject.replace(prefix, "").trim();
+      }
+    });
     const newSubject = `${prefix} ${currentSubject}`;
     Office.context.mailbox.item.subject.setAsync(newSubject);
-   // Office.context.mailbox.item.subject.replaceAsync(newSubject);
   });
+
 }
 
-/**
- * Shows a notification when the add-in command is executed.
- * @param event {Office.AddinCommands.Event}
- */
-function action(event) {
-  Office.context.mailbox.item.subject.setAsync("NEW SUBJECT");
 
+function action(event) {
   const message = {
     type: Office.MailboxEnums.ItemNotificationMessageType.InformationalMessage,
     message: "Rush ACTION EVENT Email Tags Applied.",
@@ -64,3 +69,7 @@ function action(event) {
 }
 // Register the function with Office.
 Office.actions.associate("action", action);
+Office.actions.associate("tagInfoOnly", tagInfoOnly);
+Office.actions.associate("tagActionRequired", tagActionRequired);
+Office.actions.associate("tagResponseRequested", tagResponseRequested);
+Office.actions.associate("tagUrgent", tagUrgent);
