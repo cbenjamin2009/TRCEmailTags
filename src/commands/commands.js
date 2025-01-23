@@ -14,6 +14,8 @@ Office.onReady(() => {
  */
 function tagInfoOnly(event) {
   tagEmail("[FYI]");
+  // Set importance to low
+  Office.context.mailbox.item.importance.setAsync("low");
   event.completed();
 }
 
@@ -28,9 +30,9 @@ function tagResponseRequested(event) {
 }
 
 function tagUrgent(event) {
-  tagEmail("[Response Required]");
-    Office.context.mailbox.item = Office.MailboxEnums.Importance.High;
-    event.completed(); // Ensure this is called regardless of success or failure
+          tagEmail("[URGENT]");
+          event.completed(); // Ensure this is called regardless of success or failure
+
 }
 
 function tagEmail(prefix) {
