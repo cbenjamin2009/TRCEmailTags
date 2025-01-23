@@ -12,24 +12,25 @@ Office.onReady(() => {
  * Shows a notification when the add-in command is executed.
  * @param event {Office.AddinCommands.Event}
  */
-function tagInfoOnly() {
+function tagInfoOnly(event) {
   tagEmail("[FYI]");
+  event.completed();
 }
 
-function tagActionRequired() {
+function tagActionRequired(event) {
   tagEmail("[ACTION]");
+  event.completed();
 }
 
-function tagResponseRequested() {
+function tagResponseRequested(event) {
   tagEmail("[Response Required]");
+  event.completed();
 }
 
-function tagUrgent() {
-  // set email importance to high
-  Office.context.mailbox.item.itemType === Office.MailboxEnums.ItemType.Message &&
-  Office.context.mailbox.item.setAsync({ importance: "high" });
-  tagEmail("[URGENT]");
-
+function tagUrgent(event) {
+  tagEmail("[Response Required]");
+    Office.context.mailbox.item = Office.MailboxEnums.Importance.High;
+    event.completed(); // Ensure this is called regardless of success or failure
 }
 
 function tagEmail(prefix) {
