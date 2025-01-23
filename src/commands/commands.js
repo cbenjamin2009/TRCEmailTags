@@ -30,34 +30,24 @@ function tagResponseRequested(event) {
 }
 
 function tagUrgent(event) {
-          tagEmail("[URGENT]");
-          event.completed(); // Ensure this is called regardless of success or failure
-
+  tagEmail("[URGENT]");
+  event.completed(); // Ensure this is called regardless of success or failure
 }
 
 function tagEmail(prefix) {
-  const message = {
-    type: Office.MailboxEnums.ItemNotificationMessageType.InformationalMessage,
-    message: `Prefix: ${prefix}`,
-    icon: "Icon.80x80",
-    persistent: false,
-  };
-
   Office.context.mailbox.item.subject.getAsync((result) => {
     // We must first check that the currentSubject doesn't already contain a prefix, if it does, we need to exlude it and only apply the new prefix
     const prefixes = ["[FYI]", "[ACTION]", "[Response Required]", "[URGENT]"];
     let currentSubject = result.value;
     prefixes.forEach((prefix) => {
       if (currentSubject.startsWith(prefix)) {
-      currentSubject = currentSubject.replace(prefix, "").trim();
+        currentSubject = currentSubject.replace(prefix, "").trim();
       }
     });
     const newSubject = `${prefix} ${currentSubject}`;
     Office.context.mailbox.item.subject.setAsync(newSubject);
   });
-
 }
-
 
 function action(event) {
   const message = {
