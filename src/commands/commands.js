@@ -14,8 +14,6 @@ Office.onReady(() => {
  */
 function tagInfoOnly(event) {
   tagEmail("[FYI]");
-  // Set importance to low
-  Office.context.mailbox.item.importance.setAsync("low");
   event.completed();
 }
 
@@ -50,13 +48,6 @@ function tagEmail(prefix) {
 }
 
 function action(event) {
-  const message = {
-    type: Office.MailboxEnums.ItemNotificationMessageType.InformationalMessage,
-    message: "Rush ACTION EVENT Email Tags Applied.",
-    icon: "Icon.80x80",
-    persistent: false,
-  };
-  Office.context.mailbox.item.notificationMessages.replaceAsync("action", message);
   // Be sure to indicate when the add-in command function is complete
   event.completed();
 }
