@@ -10,8 +10,8 @@
     <Description DefaultValue="An add-in to quickly append subject lines">
         <Override Locale="en-US" Value="Adjust subject lines, change priority, etc, with a click of a button. Create consistency in your email communications."/>
     </Description>
-    <IconUrl DefaultValue="assets/outline.png"/>
-    <HighResolutionIconUrl DefaultValue="assets/color.png"/>
+    <IconUrl DefaultValue="https://cbenjamin2009.github.io/TRCEmailTags/dist/assets/outline.png"/>
+    <HighResolutionIconUrl DefaultValue="https://cbenjamin2009.github.io/TRCEmailTags/dist/assets/color.png"/>
     <SupportUrl DefaultValue="https://www.therushcompanies.com"/>
     <AppDomains>
         <AppDomain>https://cbenjamin2009.github.io</AppDomain>
