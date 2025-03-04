@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schemas.microsoft.com/office/appforoffice/1.1 https://appsforoffice.microsoft.com/lib/1.1/schema/OfficeAppManifest.xsd" type="MailApp">
+    <Id>03fc7566-2ab9-4a1d-a9ee-e672b7460b60</Id>
+    <Version>1.0.1</Version>
+    <ProviderName>Chris Benjamin - Rush</ProviderName>
+    <DefaultLocale>en-US</DefaultLocale>
+    <DisplayName DefaultValue="TRCEmailTags">
+        <Override Locale="en-US" Value="Simplify Email Communication with Tags"/>
+    </DisplayName>
+    <Description DefaultValue="An add-in to quickly append subject lines">
+        <Override Locale="en-US" Value="Adjust subject lines, change priority, etc, with a click of a button. Create consistency in your email communications."/>
+    </Description>
+    <IconUrl DefaultValue="assets/outline.png"/>
+    <HighResolutionIconUrl DefaultValue="assets/color.png"/>
+    <SupportUrl DefaultValue="https://www.therushcompanies.com"/>
+    <AppDomains>
+        <AppDomain>https://cbenjamin2009.github.io</AppDomain>
+    </AppDomains>
+    <Hosts>
+        <Host Name="Mailbox"/>
+    </Hosts>
+    <Requirements>
+        <Sets DefaultMinVersion="1.3">
+            <Set Name="Mailbox"/>
+        </Sets>
+    </Requirements>
+    <FormSettings>
+        <Form xsi:type="ItemRead">
+            <DesktopSettings>
+                <SourceLocation DefaultValue="https://cbenjamin2009.github.io/TRCEmailTags/dist/commands.html"/>
+            </DesktopSettings>
+        </Form>
+    </FormSettings>
+    <Permissions>ReadWriteMailbox</Permissions>
+    <Rule xsi:type="RuleCollection" Mode="Or">
+        <Rule xsi:type="ItemIs" ItemType="Message" FormType="Read"/>
+    </Rule>
+    <Action xsi:type="ExecuteFunction" FunctionName="action"/>
+    <Action xsi:type="ExecuteFunction" FunctionName="tagInfoOnly"/>
+    <Action xsi:type="ExecuteFunction" FunctionName="tagActionRequired"/>
+    <Action xsi:type="ExecuteFunction" FunctionName="tagResponseRequested"/>
+    <Action xsi:type="ExecuteFunction" FunctionName="tagUrgent"/>
+    <Ribbons>
+        <Ribbon>
+            <Tab id="TabDefault">
+                <Group id="msgReadGroup" Label="TRC Email Tags">
+                    <Control xsi:type="Menu" id="ActionMenu" Label="Rush Email Tag" SupertipTitle="Perform an action" SupertipDescription="Perform an action when clicked.">
+                        <Item id="ActionMenuItem1" Label="Tag Info Only" SupertipTitle="Tag Info Only" SupertipDescription="Tag the email as Info Only."/>
+                        <Item id="ActionMenuItem2" Label="Tag Action Required" SupertipTitle="Tag Action Required" SupertipDescription="Tag the email as Action Required."/>
+                        <Item id="ActionMenuItem3" Label="Tag Response Requested" SupertipTitle="Tag Response Requested" SupertipDescription="Tag the email as Response Requested."/>
+                        <Item id="ActionMenuItem4" Label="Tag Urgent" SupertipTitle="Tag Urgent" SupertipDescription="Tag the email as Urgent."/>
+                    </Control>
+                </Group>
+            </Tab>
+        </Ribbon>
+    </Ribbons>
+</OfficeApp>
