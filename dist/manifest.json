@@ -1,0 +1,248 @@
+{
+    "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.17/MicrosoftTeams.schema.json",
+    "id": "03fc7566-2ab9-4a1d-a9ee-e672b7460b60",
+    "manifestVersion": "1.17",
+    "version": "1.0.1",
+    "name": {
+        "short": "TRCEmailTags",
+        "full": "Simplify Email Communication with Tags"
+    },
+    "description": {
+        "short": "An add-in to quickly append subject lines",
+        "full": "Adjust subject lines, change priority, etc, with a click of a button. Create consistency in your email communications."
+    },
+    "developer": {
+        "name": "Chris Benjamin - Rush",
+        "websiteUrl": "https://www.therushcompanies.com",
+        "privacyUrl": "https://www.therushcompanies.com/privacy",
+        "termsOfUseUrl": "https://www.therushcompanies.com/servicesagreement"
+    },
+    "icons": {
+        "outline": "assets/outline.png",
+        "color": "assets/color.png"
+    },
+    "accentColor": "#230201",
+    "localizationInfo": {
+        "defaultLanguageTag": "en-us",
+        "additionalLanguages": []
+    },
+    "authorization": {
+        "permissions": {
+            "resourceSpecific": [
+                {
+                    "name": "MailboxItem.ReadWrite.User",
+                    "type": "Delegated"
+                }
+            ]
+        }
+    },
+    "validDomains": [
+        "therushcompanies.com"
+    ],
+    "extensions": [
+        {
+            "requirements": {
+                "scopes": [
+                    "mail"
+                ],
+                "capabilities": [
+                    {
+                        "name": "Mailbox",
+                        "minVersion": "1.3"
+                    }
+                ]
+            },
+            "runtimes": [
+                {
+                    "id": "CommandsRuntime",
+                    "type": "general",
+                    "code": {
+                        "page": "https://cbenjamin2009.github.io/TRCEmailTags/src/commands/commands.html",
+                        "script": "https://cbenjamin2009.github.io/TRCEmailTags/src/commands/commands.js"
+                    },
+                    "lifetime": "short",
+                    "actions": [
+                        {
+                            "id": "action",
+                            "type": "executeFunction"
+                        },
+                        {
+                            "id": "tagInfoOnly",
+                            "type": "executeFunction"
+                        },
+                        {
+                            "id": "tagActionRequired",
+                            "type": "executeFunction"
+                        },
+                        {
+                            "id": "tagResponseRequested",
+                            "type": "executeFunction"
+                        },
+                        {
+                            "id": "tagUrgent",
+                            "type": "executeFunction"
+                        }
+
+                    ]
+                }
+            ],
+            "ribbons": [
+                {
+                    "contexts": [
+                        "mailCompose"
+                    ],
+                    "tabs": [
+                        {
+                            "builtInTabId": "TabDefault",
+                            "groups": [
+                                {
+                                    "id": "msgReadGroup",
+                                    "label": "TRC Email Tags",
+                                    "icons": [
+                                        {
+                                            "size": 16,
+                                            "url": "https://cbenjamin2009.github.io/TRCEmailTags/assets/icon-16.png"
+                                        },
+                                        {
+                                            "size": 32,
+                                            "url": "https://cbenjamin2009.github.io/TRCEmailTags/assets/icon-32.png"
+                                        },
+                                        {
+                                            "size": 80,
+                                            "url": "https://cbenjamin2009.github.io/TRCEmailTags/assets/icon-80.png"
+                                        }
+                                    ],
+                                    "controls": [
+                                        {
+                                            "id": "ActionMenu",
+                                            "type": "menu",
+                                            "label": "Rush Email Tag",
+                                            "actionId": "action",
+                                            "icons": [
+                                                {
+                                                    "size": 16,
+                                                    "url": "https://cbenjamin2009.github.io/TRCEmailTags/assets/icon-16.png"
+                                                },
+                                                {
+                                                    "size": 32,
+                                                    "url": "https://cbenjamin2009.github.io/TRCEmailTags/assets/icon-32.png"
+                                                },
+                                                {
+                                                    "size": 80,
+                                                    "url": "https://cbenjamin2009.github.io/TRCEmailTags/assets/icon-80.png"
+                                                }
+                                            ],
+                                            "supertip": {
+                                                "title": "Perform an action",
+                                                "description": "Perform an action when clicked."
+                                            },
+                                            "items": [
+                                                {
+                                                    "id": "ActionMenuItem1",
+                                                    "type": "menuItem",
+                                                    "label": "Tag Info Only",
+                                                    "actionId": "tagInfoOnly",
+                                                    "icons": [
+                                                        {
+                                                            "size": 16,
+                                                            "url": "https://cbenjamin2009.github.io/TRCEmailTags/assets/icon-16.png"
+                                                        },
+                                                        {
+                                                            "size": 32,
+                                                            "url": "https://cbenjamin2009.github.io/TRCEmailTags/assets/icon-32.png"
+                                                        },
+                                                        {
+                                                            "size": 80,
+                                                            "url": "https://cbenjamin2009.github.io/TRCEmailTags/assets/icon-80.png"
+                                                        }
+                                                    ],
+                                                    "supertip": {
+                                                        "title": "Tag Info Only",
+                                                        "description": "Tag the email as Info Only."
+
+                                                    }
+                                                },
+                                                {
+                                                    "id": "ActionMenuItem2",
+                                                    "type": "menuItem",
+                                                    "label": "Tag Action Required",
+                                                    "actionId": "tagActionRequired",
+                                                    "icons": [
+                                                        {
+                                                            "size": 16,
+                                                            "url": "https://cbenjamin2009.github.io/TRCEmailTags/assets/icon-16.png"
+                                                        },
+                                                        {
+                                                            "size": 32,
+                                                            "url": "https://cbenjamin2009.github.io/TRCEmailTags/assets/icon-32.png"
+                                                        },
+                                                        {
+                                                            "size": 80,
+                                                            "url": "https://cbenjamin2009.github.io/TRCEmailTags/assets/icon-80.png"
+                                                        }
+                                                    ],
+                                                    "supertip": {
+                                                        "title": "Tag Action Required",
+                                                        "description": "Tag the email as Action Required."
+                                                    }
+                                                },
+                                                {
+                                                    "id": "ActionMenuItem3",
+                                                    "type": "menuItem",
+                                                    "label": "Tag Response Requested",
+                                                    "actionId": "tagResponseRequested",
+                                                    "icons": [
+                                                        {
+                                                            "size": 16,
+                                                            "url": "https://cbenjamin2009.github.io/TRCEmailTags/assets/icon-16.png"
+                                                        },
+                                                        {
+                                                            "size": 32,
+                                                            "url": "https://cbenjamin2009.github.io/TRCEmailTags/assets/icon-32.png"
+                                                        },
+                                                        {
+                                                            "size": 80,
+                                                            "url": "https://cbenjamin2009.github.io/TRCEmailTags/assets/icon-80.png"
+                                                        }
+                                                    ],
+                                                    "supertip": {
+                                                        "title": "Tag Response Requested",
+                                                        "description": "Tag the email as Response Requested."
+                                                    }
+                                                },
+                                                {
+                                                    "id": "ActionMenuItem4",
+                                                    "type": "menuItem",
+                                                    "label": "Tag Urgent",
+                                                    "actionId": "tagUrgent",
+                                                    "icons": [
+                                                        {
+                                                            "size": 16,
+                                                            "url": "https://cbenjamin2009.github.io/TRCEmailTags/assets/icon-16.png"
+                                                        },
+                                                        {
+                                                            "size": 32,
+                                                            "url": "https://cbenjamin2009.github.io/TRCEmailTags/assets/icon-32.png"
+                                                        },
+                                                        {
+                                                            "size": 80,
+                                                            "url": "https://cbenjamin2009.github.io/TRCEmailTags/assets/icon-80.png"
+                                                        }
+                                                    ],
+                                                    "supertip": {
+                                                        "title": "Tag Urgent",
+                                                        "description": "Tag the email as Urgent."
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

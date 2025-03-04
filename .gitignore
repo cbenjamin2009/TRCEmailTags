@@ -37,7 +37,6 @@ __pycache__/
 *.pyd
 *.pdb
 *.egg-info/
-dist/
 build/
 
 # Java #
